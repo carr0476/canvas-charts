@@ -2,41 +2,49 @@
     {
         "id":1,
         "title":"Apple",
-        "flavour":"100"
+        "flavour":100,
+        "colour":"267F27"
     },
     {
         "id":2,
         "title":"ButterScotch",
-        "flavour":"120"
+        "flavour":120,
+        "colour":"7F360F"
     },
     {
         "id":3,
         "title":"BlueBerry",
-        "flavour":"80"
+        "flavour":80,
+        "colour":"2800FF"
     },
     {
         "id":4,
         "title":"Pumpkin",
-        "flavour": "130"
+        "flavour": 130,
+        "colour":"FF8A15"
     },
     {
         "id":5,
         "title":"Lemon Meringue",
-        "flavour":"110"
+        "flavour":110,
+        "colour":"FFF301"
     },
     {
         "id":6,
         "title":"Pecan",
-        "flavour":"105"
+        "flavour":105,
+        "colour":"FF8C5F"
     },
     {
         "id":7,
         "title":"Banana Cream",
-        "flavour":""
+        "flavour":40,
+        "colour":"FFEF4C"
     },
     {
         "id":8,
         "title":"Key Lime",
-        "flavour": "50"
+        "flavour": 50,
+        "colour":"8EFF4D"
     }
 ]
