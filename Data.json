@@ -1,0 +1,42 @@
+[
+    {
+        "id":1,
+        "title":"Apple",
+        "flavour":"100"
+    },
+    {
+        "id":2,
+        "title":"ButterScotch",
+        "flavour":"120"
+    },
+    {
+        "id":3,
+        "title":"BlueBerry",
+        "flavour":"80"
+    },
+    {
+        "id":4,
+        "title":"Pumpkin",
+        "flavour": "130"
+    },
+    {
+        "id":5,
+        "title":"Lemon Meringue",
+        "flavour":"110"
+    },
+    {
+        "id":6,
+        "title":"Pecan",
+        "flavour":"105"
+    },
+    {
+        "id":7,
+        "title":"Banana Cream",
+        "flavour":""
+    },
+    {
+        "id":8,
+        "title":"Key Lime",
+        "flavour": "50"
+    }
+]
