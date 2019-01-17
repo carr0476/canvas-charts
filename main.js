@@ -111,15 +111,20 @@ function plotGraph(data) {
     canvasB.height = 600;
 
     data.forEach(graph => {
-
+        
+        //makes the bars in the graph
         console.log(graph.title)
         ctxB.beginPath();
         ctxB.fillStyle = graph.colour;
         console.log((graph.flavour / total) * 100);
+        //this plots the graphs and flips them to start on the bottom axis
         ctxB.fillRect(endPoint, 599, width, (graph.flavour)*-4);
         endPoint = endPoint + startPoint + 80;
         console.log(startPoint)
         ctxB.closePath();
 
+        //creates the text under each bar 
+
+        //craetes the percentage on each bar
     });
 }
