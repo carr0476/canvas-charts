@@ -19,7 +19,7 @@ function fetchData() {
             makePie(data)
             plotGraph(data)
             console.log(data)
-            
+
         })
         .catch(function (err) {
             console.log("Error: ", err.message)
@@ -31,12 +31,11 @@ function makePie(data) {
     //add all the needed elemets of the canvas
     let canvasP = document.getElementById("pie")
     let ctxP = canvasP.getContext("2d");
-    let canvasB = document.getElementById("bar")
-    let ctxB = canvasB.getContext("2d");
+
 
     //aspect ratio of 4:3 maxwidth 1000px
-    canvasP.width = 1333;
-    canvasP.height = 1000;
+    canvasP.width = 800;
+    canvasP.height = 600;
     var cx = canvasP.width / 2;
     var cy = canvasP.height / 2;
     let radius = 200;
@@ -81,8 +80,8 @@ function makePie(data) {
 
         //centers the text based on which slice it belongs to
         let theta = (startAngle + endAngle) / 2;
-        let deltaY = Math.sin(theta) * 1.5 * radius;
-        let deltaX = Math.cos(theta) * 1.5 * radius;
+        let deltaY = Math.sin(theta) * 1.4 * radius;
+        let deltaX = Math.cos(theta) * 1.4 * radius;
         //math is hard
         console.log(pie.title)
         ctxP.fillText(pie.title, deltaX + cx, deltaY + cy);
@@ -101,8 +100,26 @@ function makePie(data) {
 }
 
 function plotGraph(data) {
+    let canvasB = document.getElementById("bar")
+    let ctxB = canvasB.getContext("2d");
+    let startPoint = 10;
+    let endPoint = 60;
+    let width = 60;
+    let total = 0;
+
+    canvasB.width = 800;
+    canvasB.height = 600;
+
     data.forEach(graph => {
-        console.log (graph.title)
-        
+
+        console.log(graph.title)
+        ctxB.beginPath();
+        ctxB.fillStyle = graph.colour;
+        console.log((graph.flavour / total) * 100);
+        ctxB.fillRect(endPoint, 600, width, (graph.flavour)*-4);
+        endPoint = endPoint + startPoint + 80;
+        console.log(startPoint)
+        ctxB.closePath();
+
     });
 }
