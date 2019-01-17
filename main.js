@@ -8,15 +8,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function fetchData() {
     //fetching the json data
-    console.log("executing Fetch")
+    console.log("Executing Fetch")
     fetch('./Data.json')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            //passing the fetched data to the filter function
+            //passing the fetched data to the graphing functions
+            console.log("Success")
             makePie(data)
+            plotGraph(data)
             console.log(data)
+            
         })
         .catch(function (err) {
             console.log("Error: ", err.message)
@@ -30,6 +33,8 @@ function makePie(data) {
     let ctxP = canvasP.getContext("2d");
     let canvasB = document.getElementById("bar")
     let ctxB = canvasB.getContext("2d");
+
+    //aspect ratio of 4:3 maxwidth 1000px
     canvasP.width = 1333;
     canvasP.height = 1000;
     var cx = canvasP.width / 2;
@@ -43,7 +48,7 @@ function makePie(data) {
     data.forEach(data => {
         flavour = flavour + Number(data.flavour)
     })
-    console.log("total is", flavour)
+    console.log("Total is", flavour)
 
 
     //create the pie chart by looping through the array
@@ -54,11 +59,11 @@ function makePie(data) {
         ctxP.strokeStlye = '#333';
 
         //begin drawing the slice
-        console.log("creating slice")
+        console.log("Creating slice:")
         ctxP.beginPath();
         let endAngle = ((pie.flavour / flavour) * Math.PI * 2) + startAngle;
-        console.log("end", endAngle)
-        console.log("start", startAngle);
+        // console.log("end", endAngle)
+        // console.log("start", startAngle);
         ctxP.moveTo(cx, cy);
         ctxP.arc(cx, cy, radius, startAngle, endAngle, false);
         ctxP.lineTo(cx, cy);
@@ -80,17 +85,24 @@ function makePie(data) {
         let deltaX = Math.cos(theta) * 1.5 * radius;
         //math is hard
         console.log(pie.title)
-        ctxP.fillText(pie.title, deltaX+cx, deltaY+cy);
+        ctxP.fillText(pie.title, deltaX + cx, deltaY + cy);
         ctxP.closePath();
 
-        //creates the percentage
+        //creates the percentage using the same math to center them
         ctxP.beginPath();
         ctxP.font = "22px Helvetica, Calibri";
         ctxP.textAlign = "center";
         ctxP.fillStyle = "#333";
-        let percent = Math.trunc((pie.flavour / flavour)*100)
-        ctxP.fillText(percent+"%", (deltaX/2)+cx, (deltaY/2)+cy);
+        let percent = Math.trunc((pie.flavour / flavour) * 100)
+        ctxP.fillText(percent + "%", (deltaX / 2) + cx, (deltaY / 2) + cy);
         ctxP.closePath();
         startAngle = endAngle;
+    });
+}
+
+function plotGraph(data) {
+    data.forEach(graph => {
+        console.log (graph.title)
+        
     });
 }
