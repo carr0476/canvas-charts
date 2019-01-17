@@ -30,14 +30,14 @@ function makePie(data) {
     let ctxP = canvasP.getContext("2d");
     let canvasB = document.getElementById("bar")
     let ctxB = canvasB.getContext("2d");
-    canvasP.width = 800;
-    canvasP.height = 600;
+    canvasP.width = 1333;
+    canvasP.height = 1000;
     var cx = canvasP.width / 2;
     var cy = canvasP.height / 2;
-    let radius = 150;
+    let radius = 200;
     let startAngle = 0;
     let flavour = 0;
-   
+
 
     //determine the sum of all the numbers being used in the pie chart
     data.forEach(data => {
@@ -54,6 +54,7 @@ function makePie(data) {
         ctxP.strokeStlye = '#333';
 
         //begin drawing the slice
+        console.log("creating slice")
         ctxP.beginPath();
         let endAngle = ((pie.flavour / flavour) * Math.PI * 2) + startAngle;
         console.log("end", endAngle)
@@ -65,17 +66,31 @@ function makePie(data) {
         ctxP.stroke();
         ctxP.closePath();
 
-        console.log(pie.colour)
+        // console.log(pie.colour)
 
-        //add the tags to each slice
+        //add the titles to each slice
         ctxP.beginPath();
-        ctxP.font="20px Helvetica, Calibri"
-        ctxP.textAlign="center"
-        ctxP.fillStyle="#333"
-        ctxP.
+        ctxP.font = "22px Helvetica, Calibri";
+        ctxP.textAlign = "center";
+        ctxP.fillStyle = "#333";
+
+        //centers the text based on which slice it belongs to
+        let theta = (startAngle + endAngle) / 2;
+        let deltaY = Math.sin(theta) * 1.5 * radius;
+        let deltaX = Math.cos(theta) * 1.5 * radius;
+        //math is hard
+        console.log(pie.title)
+        ctxP.fillText(pie.title, deltaX+cx, deltaY+cy);
         ctxP.closePath();
 
+        //creates the percentage
+        ctxP.beginPath();
+        ctxP.font = "22px Helvetica, Calibri";
+        ctxP.textAlign = "center";
+        ctxP.fillStyle = "#333";
+        let percent = Math.trunc((pie.flavour / flavour)*100)
+        ctxP.fillText(percent+"%", (deltaX/2)+cx, (deltaY/2)+cy);
+        ctxP.closePath();
         startAngle = endAngle;
     });
 }
-// data[id].title
