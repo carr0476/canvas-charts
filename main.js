@@ -3,7 +3,6 @@
 //canvas charts assignment
 
 document.addEventListener('DOMContentLoaded', function () {
-    //executing fetch
     fetchData()
 })
 
@@ -31,25 +30,34 @@ function makePie(data) {
     let ctxP = canvasP.getContext("2d");
     let canvasB = document.getElementById("bar")
     let ctxB = canvasB.getContext("2d");
+    canvasP.width = 800;
+    canvasP.height = 600;
     var cx = canvasP.width / 2;
     var cy = canvasP.height / 2;
-    let radius = 120;
+    let radius = 150;
     let startAngle = 0;
-
     let flavour = 0;
+   
+
+    //determine the sum of all the numbers being used in the pie chart
     data.forEach(data => {
         flavour = flavour + Number(data.flavour)
     })
     console.log("total is", flavour)
 
+
+    //create the pie chart by looping through the array
     data.forEach(pie => {
-        // console.log("pie")
+        //set the colour values for the stroke and fill
         ctxP.fillStyle = pie.colour;
         ctxP.lineWidth = 1;
         ctxP.strokeStlye = '#333';
+
+        //begin drawing the slice
         ctxP.beginPath();
-        console.log(pie.flavour / flavour);
         let endAngle = ((pie.flavour / flavour) * Math.PI * 2) + startAngle;
+        console.log("end", endAngle)
+        console.log("start", startAngle);
         ctxP.moveTo(cx, cy);
         ctxP.arc(cx, cy, radius, startAngle, endAngle, false);
         ctxP.lineTo(cx, cy);
@@ -58,6 +66,16 @@ function makePie(data) {
         ctxP.closePath();
 
         console.log(pie.colour)
+
+        //add the tags to each slice
+        ctxP.beginPath();
+        ctxP.font="20px Helvetica, Calibri"
+        ctxP.textAlign="center"
+        ctxP.fillStyle="#333"
+        ctxP.
+        ctxP.closePath();
+
+        startAngle = endAngle;
     });
 }
 // data[id].title
