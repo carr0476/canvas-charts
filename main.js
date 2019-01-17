@@ -116,7 +116,7 @@ function plotGraph(data) {
         ctxB.beginPath();
         ctxB.fillStyle = graph.colour;
         console.log((graph.flavour / total) * 100);
-        ctxB.fillRect(endPoint, 600, width, (graph.flavour)*-4);
+        ctxB.fillRect(endPoint, 599, width, (graph.flavour)*-4);
         endPoint = endPoint + startPoint + 80;
         console.log(startPoint)
         ctxB.closePath();
