@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     fetchData()
+    var flavour;
 })
 
 function fetchData() {
@@ -36,11 +37,11 @@ function makePie(data) {
     //aspect ratio of 4:3 maxwidth 1000px
     canvasP.width = 800;
     canvasP.height = 600;
-    var cx = canvasP.width / 2;
-    var cy = canvasP.height / 2;
+    let cx = canvasP.width / 2;
+    let cy = canvasP.height / 2;
     let radius = 200;
     let startAngle = 0;
-    let flavour = 0;
+    var flavour = 0;
 
 
     //determine the sum of all the numbers being used in the pie chart
@@ -61,8 +62,6 @@ function makePie(data) {
         console.log("Creating slice:")
         ctxP.beginPath();
         let endAngle = ((pie.flavour / flavour) * Math.PI * 2) + startAngle;
-        // console.log("end", endAngle)
-        // console.log("start", startAngle);
         ctxP.moveTo(cx, cy);
         ctxP.arc(cx, cy, radius, startAngle, endAngle, false);
         ctxP.lineTo(cx, cy);
@@ -92,7 +91,7 @@ function makePie(data) {
         ctxP.font = "22px Helvetica, Calibri";
         ctxP.textAlign = "center";
         ctxP.fillStyle = "#333";
-        let percent = Math.trunc((pie.flavour / flavour) * 100)
+        let percent = ((pie.flavour / flavour) * 100).toFixed(1);
         ctxP.fillText(percent + "%", (deltaX / 2) + cx, (deltaY / 2) + cy);
         ctxP.closePath();
         startAngle = endAngle;
@@ -106,25 +105,45 @@ function plotGraph(data) {
     let endPoint = 60;
     let width = 60;
     let total = 0;
+    let flavour=0;
 
     canvasB.width = 800;
     canvasB.height = 600;
 
+    data.forEach(data => {
+        flavour = flavour + Number(data.flavour)
+        console.log(flavour)
+    })
+
     data.forEach(graph => {
-        
+
         //makes the bars in the graph
         console.log(graph.title)
         ctxB.beginPath();
         ctxB.fillStyle = graph.colour;
         console.log((graph.flavour / total) * 100);
         //this plots the graphs and flips them to start on the bottom axis
-        ctxB.fillRect(endPoint, 599, width, (graph.flavour)*-4);
+        ctxB.fillRect(endPoint, 579, width, (graph.flavour) * -3);
         endPoint = endPoint + startPoint + 80;
-        console.log(startPoint)
         ctxB.closePath();
 
-        //creates the text under each bar 
+         //creates the text under each bar 
+         ctxB.beginPath();
+         ctxB.font = "12px Helvetica, Calibri";
+         ctxB.textAlign = "center";
+         ctxB.fillStyle = "#333";
+         ctxB.fillText(graph.title, endPoint-60, 590);
+         ctxB.closePath();
 
         //craetes the percentage on each bar
+        ctxB.beginPath();
+         ctxB.font = "20px Helvetica, Calibri";
+         ctxB.textAlign = "center";
+         ctxB.fillStyle = "#333";
+         let percent = ((pie.flavour / flavour) * 100).toFixed(1);
+         ctxB.fillText(percent+'%', endPoint-60, 559);
+        //  let percent = ((pie.flavour / flavour) * 100).toFixed(1);
+        // ctxP.fillText(percent + "%", (deltaX / 2) + cx, (deltaY / 2) + cy);
+         ctxB.closePath();
     });
 }
