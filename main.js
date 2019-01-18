@@ -105,7 +105,7 @@ function plotGraph(data) {
     let endPoint = 60;
     let width = 60;
     let total = 0;
-    let flavour=0;
+    let flavour = 0;
 
     canvasB.width = 800;
     canvasB.height = 600;
@@ -114,7 +114,7 @@ function plotGraph(data) {
         flavour = flavour + Number(data.flavour)
         console.log(flavour)
     })
-
+console.log("total is", flavour)
     data.forEach(graph => {
 
         //makes the bars in the graph
@@ -140,8 +140,8 @@ function plotGraph(data) {
          ctxB.font = "20px Helvetica, Calibri";
          ctxB.textAlign = "center";
          ctxB.fillStyle = "#333";
-         let percent = ((pie.flavour / flavour) * 100).toFixed(1);
-         ctxB.fillText(percent+'%', endPoint-60, 559);
+         let percent = ((graph.flavour / flavour) * 100).toFixed(1);
+         ctxB.fillText(percent+ '%', endPoint-60, 559);
         //  let percent = ((pie.flavour / flavour) * 100).toFixed(1);
         // ctxP.fillText(percent + "%", (deltaX / 2) + cx, (deltaY / 2) + cy);
          ctxB.closePath();
