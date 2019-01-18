@@ -131,7 +131,7 @@ function plotGraph(data) {
         ctxB.font = "14px Helvetica, Calibri";
         ctxB.textAlign = "center";
         ctxB.fillStyle = "#333";
-        ctxB.fillText(graph.title, endPoint - 60, 590);
+        ctxB.fillText(graph.title, endPoint - 60, 595);
         ctxB.closePath();
 
         //craetes the percentage on each bar
