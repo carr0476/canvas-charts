@@ -69,8 +69,6 @@ function makePie(data) {
         ctxP.stroke();
         ctxP.closePath();
 
-        // console.log(pie.colour)
-
         //add the titles to each slice
         ctxP.beginPath();
         ctxP.font = "22px Helvetica, Calibri";
