@@ -114,7 +114,6 @@ function plotGraph(data) {
         flavour = flavour + Number(data.flavour)
         console.log(flavour)
     })
-console.log("total is", flavour)
     data.forEach(graph => {
 
         //makes the bars in the graph
@@ -127,23 +126,21 @@ console.log("total is", flavour)
         endPoint = endPoint + startPoint + 80;
         ctxB.closePath();
 
-         //creates the text under each bar 
-         ctxB.beginPath();
-         ctxB.font = "12px Helvetica, Calibri";
-         ctxB.textAlign = "center";
-         ctxB.fillStyle = "#333";
-         ctxB.fillText(graph.title, endPoint-60, 590);
-         ctxB.closePath();
+        //creates the text under each bar 
+        ctxB.beginPath();
+        ctxB.font = "14px Helvetica, Calibri";
+        ctxB.textAlign = "center";
+        ctxB.fillStyle = "#333";
+        ctxB.fillText(graph.title, endPoint - 60, 590);
+        ctxB.closePath();
 
         //craetes the percentage on each bar
         ctxB.beginPath();
-         ctxB.font = "20px Helvetica, Calibri";
-         ctxB.textAlign = "center";
-         ctxB.fillStyle = "#333";
-         let percent = ((graph.flavour / flavour) * 100).toFixed(1);
-         ctxB.fillText(percent+ '%', endPoint-60, 559);
-        //  let percent = ((pie.flavour / flavour) * 100).toFixed(1);
-        // ctxP.fillText(percent + "%", (deltaX / 2) + cx, (deltaY / 2) + cy);
-         ctxB.closePath();
+        ctxB.font = "20px Helvetica, Calibri";
+        ctxB.textAlign = "center";
+        ctxB.fillStyle = "#333";
+        let percent = ((graph.flavour / flavour) * 100).toFixed(1);
+        ctxB.fillText(percent + '%', endPoint - 60, 559);
+        ctxB.closePath();
     });
 }

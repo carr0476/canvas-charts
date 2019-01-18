@@ -7,15 +7,15 @@
     },
     {
         "id":2,
-        "title":"ButterScotch",
+        "title":"Butterscotch",
         "flavour":120,
-        "colour":"#7F360F"
+        "colour":"#7F4230"
     },
     {
         "id":3,
         "title":"BlueBerry",
         "flavour":80,
-        "colour":"#2800FF"
+        "colour":"#5FD6FF"
     },
     {
         "id":4,
